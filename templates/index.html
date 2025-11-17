@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSC 221 - Final Challenge</title>
+</head>
+<body>
+    <h2>Spring 2025 - EMPL_ID <a href="#">24416744</a></h2>
+    <h1>CSC 221 - Final Challenge</h1>
+
+    <form action="/annotate_receipt" method="post" enctype="multipart/form-data">
+        <label>Choose or take a receipt photo:</label><br>
+        <input type="file" name="photo" accept="image/*" required><br><br>
+
+        <label>New Tax Rate (%):</label><br>
+        <input type="number" name="tax_rate" step="0.01" required><br><br>
+
+        <input type="submit" value="Annotate">
+    </form>
+
+    {% if image_data %}
+        <h3>Annotated Receipt:</h3>
+        <img src="data:image/jpeg;base64,{{ image_data }}" alt="Annotated receipt" width="400"><br><br>
+
+        <p><strong>The amount before tax was ${{ amount_before_tax }}.</strong></p>
+    {% endif %}
+</body>
+</html>
